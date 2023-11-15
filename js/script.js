@@ -1,29 +1,27 @@
+//Seleziono btn da dom
+let btn = document.querySelector('#btn');
+//Seleziono checkbox da dom
+let checkbox = document.querySelector('#cb');
 
-// seleziono btn da dom
-let btn = document.querySelector('.btnCeles');
-// seleziono checkbox da dom
-let nomeForm = document.querySelector('#cb');
-console.log(nomeForm);
-/* cbCheck()
-function cbCheck(){
-    if (nomeForm.cb.checked){
-        alert("CheckBox spuntato");
+//Dichiaro funzione abilitaBtn()
+function abilitaBtn(){
+    //Setto il bottone come disable
+    btn.disabled = true;
+    //Setto un ascoltatore che al click della checkbox mi controlla (segue commento)
+    checkbox.addEventListener('click', () => {
+    //Tramite if se la checkbox è flaggata o meno
+    if (!checkbox.checked){
+        //Mantengo il bottone come disable
+        btn.disabled = true;
     }
     else{
-        alert("CheckBox non spuntato");
+        //Setto il bottone come attivo
+        btn.disabled = false;
     }
+    })
 }
- */
-
-/* function abilitaBtn(){
-    if (checkbox.checked){
-        alert("CheckBox spuntato");
-    }
-    else{
-        alert("CheckBox non spuntato");
-    }
-}
-abilitaBtn() */
+//Richiamo la funzione abilitaBtn()
+abilitaBtn();
 
 function cambiostella() {
     const stelleAttive = document.querySelectorAll(".stellina");
