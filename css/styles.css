@@ -12,6 +12,9 @@ body {
 .alignLeft{
     text-align: left;
 }
+.alignRight{
+    text-align: right;
+}
 .container {
     margin: 5%;
 }
@@ -79,3 +82,49 @@ span::before{
     background: linear-gradient(180deg, rgba(210,0,148,1) 0%, rgba(144,0,128,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d20094",endColorstr="#900080",GradientType=1);
 }
+
+
+
+
+#timer {
+    position: relative;
+    margin: auto;
+    margin-top: 100px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+  }
+  
+  #timer-number {
+    color: white;
+    display: inline-block;
+    line-height: 40px;
+  }
+  
+  svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+  }
+  
+  svg circle {
+    stroke-dasharray: 113px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+    stroke-width: 2px;
+    stroke: white;
+    fill: none;
+    animation: countdown 11s ease-out forwards;
+  }
+
+  @keyframes countdown {
+    from {
+      stroke-dashoffset: 0px;
+    }
+    to {
+      stroke-dashoffset: 113px;
+    }
+  }
