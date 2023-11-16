@@ -27,6 +27,7 @@ function abilitaBtn(){
     })
 }
 
+
 // Verifico se la pagina corrente è quella desiderata
 if (window.location.href.indexOf("welcome.html") > -1) {
     // Eseguo la funzione solo se la condizione è soddisfatta
@@ -125,6 +126,10 @@ startCountdown();
 
 
 
+
+
+
+// codice cambio colore stelle feedback
 function cambiostella() {
     const stelleAttive = document.querySelectorAll(".stellina");
 
@@ -167,3 +172,54 @@ function changeStarColor(svgImage, newColor) {
 }
 
 cambiostella();
+
+// codice Cerchio Result
+
+document.addEventListener('DOMContentLoaded', function() {
+    var canvas = document.getElementById('doughnutChart');
+    var ctx = canvas.getContext('2d');
+    var centerX = canvas.width / 2;
+    var centerY = canvas.height / 2;
+    var radius = Math.min(canvas.width, canvas.height) / 2;
+
+    // Dati del grafico
+    var data = [40, 60];
+    var colors = ['#C2128D', '#00FFFF'];
+
+    // Opzioni del grafico
+    var cutoutPercentage = 0; // Imposta la percentuale di ritaglio a 0
+    var innerRadiusPercentage = 70; // Imposta la percentuale del raggio interno
+
+    // Calcola il raggio interno in base alla percentuale
+    var innerRadius = (innerRadiusPercentage / 100) * radius;
+
+    // Disegna la ciambella
+    drawDoughnutChart(ctx, centerX, centerY, radius, innerRadius, cutoutPercentage, data, colors);
+});
+
+function drawDoughnutChart(ctx, x, y, outerRadius, innerRadius, cutoutPercentage, data, colors) {
+    var total = data.reduce(function (acc, value) {
+        return acc + value;
+    }, 0);
+
+    var startAngle = -Math.PI / 2;  
+    var endAngle;
+
+    for (var i = 0; i < data.length; i++) {
+        var sliceAngle = (2 * Math.PI * data[i]) / total;
+
+        // Calcola l'angolo finale del segmento
+        endAngle = startAngle + sliceAngle;
+
+        // Disegna la fetta
+        ctx.beginPath();
+        ctx.arc(x, y, outerRadius, startAngle, endAngle);
+        ctx.arc(x, y, innerRadius, endAngle, startAngle, true); // Disegna il cerchio interno
+        ctx.closePath();
+        ctx.fillStyle = colors[i];
+        ctx.fill();
+
+        // Aggiorna l'angolo di partenza per il prossimo segmento
+        startAngle = endAngle;
+    }
+}

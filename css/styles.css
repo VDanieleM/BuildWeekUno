@@ -1,20 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
+    background-color: white;
     background-image: url(../img/bg.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
     color: white;
 }
 
 .alignCenter {
     text-align: center;
 }
+
 .alignLeft{
     text-align: left;
 }
+
 .alignRight{
     text-align: right;
 }
+
 .container {
     margin: 5%;
 }
@@ -26,13 +31,23 @@ h1, h2, h3{
 p, ul, label {
     font-family: 'Inter', sans-serif;
 }
+
+p {
+  margin: 0.3em 0;
+}
+
 .logo{
     width: 12em;
+    margin: 0;
+    padding: 0;
+    text-align: left;
 }
+
 span::before{
     content: "\a";
     white-space: pre;
 }
+
 .titolo-welcome{
     display: block;
     font-size: 2em;
@@ -42,6 +57,7 @@ span::before{
     margin-inline-end: 0px;
     font-weight: bold;
 }
+
 .btnCeles {
     color: #0B113B;
     font-size: 2em;
@@ -52,6 +68,7 @@ span::before{
     width: 13.5%;
     height: 2.2em;
 }
+
 .btnCeles:disabled{
     color:#0B113B;
     font-size: 2em;
@@ -62,17 +79,18 @@ span::before{
     width: 13.5%;
     height: 2.2em;
 }
+
 .btnTransp {
     color: white;
-    font-size: 255%;
+    font-size: 1em;
     font-weight: 600;
     background-color: rgba(0, 0, 0, 0.04);
     border: solid;
     border-width: 2px;
     border-color: white;
-    box-shadow: 0px 0px 10px #00FFFF;
-    width: 13.5%;
-    height: 2.2rem;
+    box-shadow: 0px 0px 10px #00ffff76;
+    width: 200px;
+    height: 50px;
 }
 
 .btnBench {
@@ -82,6 +100,7 @@ span::before{
     background: linear-gradient(180deg, rgba(210,0,148,1) 0%, rgba(144,0,128,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d20094",endColorstr="#900080",GradientType=1);
 }
+
 
 
 
@@ -127,4 +146,62 @@ span::before{
     to {
       stroke-dashoffset: 113px;
     }
+    }
+
+  
+  .chart-container {
+    position: relative;
+    margin: 1em auto;
+    width: 350px;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  #doughnutChart {
+    text-shadow: 5px 5px 5px white;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+  }
+  
+  canvas {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border: 0 none;
+    border-style: dashed;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .center-text, .center-textDue, .center-textTre {
+    transform: translate(0%, -210%);
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .center-textDue {
+    transform: translate(0%, 0%);
+    color: #00FFFF;
+    font-weight: bold;
+  }
+
+  .center-textTre {
+    transform: translate(0%, 0%);
+    margin-top: 2em;
+    margin-left: 6em;
+    margin-right: 6em;
+    font-weight: 100;
+    font-size: 80%;
+  }
+
+  #rate {
+    transform: translate(0%, -195%);
+  };
+
+  #correct {
+    transform: translate(-50%, -150%);
+  }
+
+  #wrong {
+    transform: translate(300px, -2180%);
   }
