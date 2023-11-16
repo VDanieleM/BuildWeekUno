@@ -66,8 +66,13 @@ function startCountdown(){
         }
 }, 1000);
 }
-startCountdown();
 
+
+if (window.location.href.indexOf("benchmark.html") > -1) {
+    // Eseguo la funzione solo se la condizione è soddisfatta
+    //Richiamo la  funzione abilitaBtn()
+    startCountdown();
+}
     
 /* 
     //Imposto setInterval ed assegno a mia variabile contatore
