@@ -132,6 +132,7 @@ span::before{
 .timer.animatable > svg > circle + circle {
     animation: countdown 61s ease-in-out forwards;
 }
+
 @keyframes countdown {
     from {
       stroke-dashoffset: 0px;
@@ -140,6 +141,11 @@ span::before{
       stroke-dashoffset: 1px;
     }
   }
+
+.timer text{
+    fill: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+}
 .timer > svg > text {
     font-size: 2rem;
 }
