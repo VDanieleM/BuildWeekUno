@@ -29,7 +29,7 @@ function abilitaBtn(){
 
 
 // Verifico se la pagina corrente è quella desiderata
-if (window.location.href.indexOf("welcome.html") > -1) {
+if (window.location.href.indexOf("index.html") > -1) {
     // Eseguo la funzione solo se la condizione è soddisfatta
     //Richiamo la  funzione abilitaBtn()
     abilitaBtn();
@@ -195,7 +195,7 @@ if (window.location.href.indexOf("results.html") > -1) {
     cerchioRisultato();
 }
 
-cerchioRisultato = () => {
+function cerchioRisultato() {
 document.addEventListener('DOMContentLoaded', function() {
     var canvas = document.getElementById('doughnutChart');
     var ctx = canvas.getContext('2d');

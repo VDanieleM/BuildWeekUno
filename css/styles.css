@@ -30,7 +30,20 @@ h1, h2, h3{
 
 h1 {
   font-size: 3em;
-  
+  font-weight: 600;
+  margin: 0.5em;
+}
+
+h2 {
+  font-size: 2.5em;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+  font-weight: 200;
 }
 
 p, ul, label {
@@ -41,9 +54,41 @@ p {
   margin: 0.3em 0;
 }
 
+form h3 {
+  margin-top: 2.5em;
+  margin-bottom: 1.5em;
+}
+
+form .btnCeles {
+  font-family: 'Outfit', sans-serif;
+  margin: 1em;
+  font-size: 1.2em;
+  font-weight: 800;
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0);
+  border-color: #C0128C;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 48em;
+  padding: 1em;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+#stelle {
+  padding: 2em;
+}
+
+input::placeholder {
+  font-family: 'Inter', sans-serif;
+}
+
 .logo{
     width: 12em;
-    margin: 0;
+    margin-bottom: 1em;
     padding: 0;
     text-align: left;
 }
@@ -53,14 +98,71 @@ span::before{
     white-space: pre;
 }
 
-.titolo-welcome{
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
+.titolo-welcome {
+  font-size: 5em;
+  font-weight: 300;
+  line-height: 0.75em;
+}
+
+span {
+  font-weight: 600;
+}
+
+#instructions {
+  color: #C2128D;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+.homehome p {
+  margin-right: 60%;
+  margin-bottom: 3em;
+  font-weight: 200;
+  margin-left: 2.5em;
+}
+
+.homehome ul {
+  list-style-type: disc;
+  line-height: 1.5em;
+  font-weight: 200;
+  font-family: 'Outfit', sans-serif;
+  margin-left: 4em;
+}
+
+b {
+  font-weight: 600;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid white;
+  background-color: transparent;
+  border-radius: 3px;
+  margin: 0;
+  padding: 0;
+  height: 1em;
+  width: 1em;
+  margin-left: 3.5em;
+  transform: translate(0%, 20%);
+}
+
+input[type="checkbox"]:checked {
+  background-color: white;
+}
+
+label {
+  font-size: 0.8em;
+}
+
+#cb {
+  margin-top: 6em;
+  text-align: left;
+}
+
+#btn {
+  margin-left: 10em;
 }
 
 .btnCeles {
@@ -70,19 +172,19 @@ span::before{
     background-color: #00FFFF;
     border: none;
     box-shadow: 0px 0px 30px #00FFFF;
-    width: 13.5%;
-    height: 2.2em;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
 }
 
 .btnCeles:disabled{
-    color:#0B113B;
-    font-size: 2em;
-    font-weight: 600;
-    background-color: rgba(128, 128, 128, 0.37);
-    border: none;
-    box-shadow: 0px 0px 0px 0px;
-    width: 13.5%;
-    height: 2.2em;
+  color: rgba(0, 0, 0, 0.378);
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.161);
+  border: none;
+  box-shadow: none;
+  width: 200px;
+  height: 50px;
 }
 
 .btnTransp {
@@ -96,6 +198,7 @@ span::before{
     box-shadow: 0px 0px 10px #00ffff76;
     width: 200px;
     height: 50px;
+    cursor: pointer;
 }
 
 .btnBench {
@@ -105,9 +208,6 @@ span::before{
     background: linear-gradient(180deg, rgba(210,0,148,1) 0%, rgba(144,0,128,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d20094",endColorstr="#900080",GradientType=1);
 }
-
-
-
 
 .timer {
     margin-top: 10px;
@@ -169,8 +269,8 @@ span::before{
 }
 
 #doughnutChart {
-    text-shadow: 5px 5px 5px white;
-    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+  text-shadow: 5px 5px 5px white;
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
 }
   
 canvas {
@@ -206,14 +306,40 @@ canvas {
 
 #rate {
     transform: translate(0%, -195%);
-};
+}
+
+#mainResult {
+  position: relative;
+}
+
+#correct, #wrong {
+  position: absolute;
+  text-align: center;
+  width: calc(50% - 20px);
+  top: 8em;
+}
 
 #correct {
-    transform: translate(-50%, -150%);
+  left: 20%;
+  text-align: left;
+}
+
+#correct p:first-of-type {
+  font-size: 2.3em;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;;
 }
 
 #wrong {
-    transform: translate(300px, -2180%);
+  right: 20%;
+  text-align: right;
+  
+}
+
+#wrong p:first-of-type {
+  font-size: 2.3em;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;;
 }
 
 td button {
