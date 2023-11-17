@@ -104,50 +104,49 @@ span::before{
 
 
 
+.timer {
+    margin-top: 10px;
+}
+  
+.timer > svg {
+    width: 200px;
+    height: 200px;
+}
 
-#timer {
-    position: relative;
-    margin: auto;
-    margin-top: 100px;
-    height: 40px;
-    width: 40px;
-    text-align: center;
-  }
-  
-  #timer-number {
-    color: white;
-    display: inline-block;
-    line-height: 40px;
-  }
-  
-  svg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    transform: rotateY(-180deg) rotateZ(-90deg);
-  }
-  
-  svg circle {
-    stroke-dasharray: 113px;
-    stroke-dashoffset: 0px;
-    stroke-linecap: round;
-    stroke-width: 2px;
-    stroke: white;
+.timer > svg > circle {
     fill: none;
-    animation: countdown 11s ease-out forwards;
-  }
+    stroke-opacity: 0.3;
+    stroke: #00FFFF;
+    stroke-width: 10;
+    transform-origin: center center;
+    transform: rotate(-90deg);
+}
 
-  @keyframes countdown {
+.timer > svg > circle + circle {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    stroke-linecap: round;
+    stroke-opacity: 1;
+}
+
+.timer.animatable > svg > circle + circle {
+    animation: countdown 61s ease-in-out forwards;
+}
+@keyframes countdown {
     from {
       stroke-dashoffset: 0px;
     }
     to {
-      stroke-dashoffset: 113px;
+      stroke-dashoffset: 1px;
     }
-    }
+  }
+.timer > svg > text {
+    font-size: 2rem;
+}
 
+.timer > svg > text + text {
+    font-size: 1rem;
+}
   
   .chart-container {
     position: relative;
