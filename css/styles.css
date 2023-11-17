@@ -28,6 +28,11 @@ h1, h2, h3{
     font-family: 'Outfit', sans-serif;
 }
 
+h1 {
+  font-size: 3em;
+  
+}
+
 p, ul, label {
     font-family: 'Inter', sans-serif;
 }

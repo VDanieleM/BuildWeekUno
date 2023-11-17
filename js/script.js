@@ -189,6 +189,13 @@ cambiostella();
 
 // codice Cerchio Result
 
+if (window.location.href.indexOf("results.html") > -1) {
+    // Eseguo la funzione solo se la condizione è soddisfatta
+    //Richiamo la  funzione abilitaBtn()
+    cerchioRisultato();
+}
+
+cerchioRisultato = () => {
 document.addEventListener('DOMContentLoaded', function() {
     var canvas = document.getElementById('doughnutChart');
     var ctx = canvas.getContext('2d');
@@ -236,4 +243,4 @@ function drawDoughnutChart(ctx, x, y, outerRadius, innerRadius, cutoutPercentage
         // Aggiorna l'angolo di partenza per il prossimo segmento
         startAngle = endAngle;
     }
-}
+}}
