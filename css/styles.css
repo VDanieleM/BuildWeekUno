@@ -204,3 +204,12 @@ span::before{
   #wrong {
     transform: translate(300px, -2180%);
   }
+
+  .brisposte {
+    max-width: 250px;
+    padding: 1rem;
+    position: relative;
+    background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0.159));
+    padding: 3px;
+    margin: 1em;
+  }
