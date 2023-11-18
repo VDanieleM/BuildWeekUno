@@ -222,7 +222,7 @@ label {
     fill: none;
     stroke-opacity: 0.3;
     stroke: #00FFFF;
-    stroke-width: 10;
+    stroke-width: 15;
     transform-origin: center center;
     transform: rotate(-90deg);
 }
@@ -230,7 +230,7 @@ label {
 .timer > svg > circle + circle {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
-    stroke-linecap: round;
+    stroke-linecap: square;
     stroke-opacity: 1;
 }
 
@@ -251,8 +251,8 @@ label {
     fill: #FFFFFF;
     font-family: 'Inter', sans-serif;
 }
-.timer > svg > text {
-    font-size: 2rem;
+#timer-number {
+    font-size: 3.5rem;
 }
 
 .timer > svg > text + text {
