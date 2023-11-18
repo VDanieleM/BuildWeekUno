@@ -19,6 +19,7 @@ function abilitaBtn(){
     else{
         //Setto il bottone come attivo
         btn.disabled = false;
+        //Setto un ascoltatore che al click mi porta alla pagina benchmark.html tramite window.location
         btn.addEventListener('click', () => {
             window.location = 'benchmark.html'
         })
@@ -54,14 +55,13 @@ if (window.location.href.indexOf("index.html") > -1) {
      let contatore = setInterval(function() {
          //Inserisco il countdown legandolo alla mia variabile timer
          timer.textContent = count;
-         //Avvio il countdown
+         //Avvio il countdown ed assegno a mia variabile varTime
          let varTime = count--;
          //Verifico che il valore di riferimento count è minore di 0
            if (count < 0) {
              //Pulisco il setInterval della variabile contatore
              clearInterval(contatore);
-         }else{ 
-             
+         }else{    
              const normalizedTime = (60 + varTime) / 60;
              //Assegno stile ad animazione
              animazione.style.strokeDashoffset = normalizedTime;
@@ -70,8 +70,7 @@ if (window.location.href.indexOf("index.html") > -1) {
              //Rimuovo classe aggiunta ad animazione
              animazione.classList.remove('animatable');
              //Carico domande
-             
-         
+             /* prossimaDomanda() */
          }
  }, 1000);
  }
