@@ -7,7 +7,6 @@ let checkbox = document.querySelector('#cb');
 
 //Dichiaro funzione abilitaBtn()
 function abilitaBtn(){
-    
     //Setto il bottone come disable
     btn.disabled = true;
     //Setto un ascoltatore che al click della checkbox mi controlla (segue commento)
@@ -27,7 +26,6 @@ function abilitaBtn(){
     })
 }
 
-
 // Verifico se la pagina corrente è quella desiderata
 if (window.location.href.indexOf("welcome.html") > -1) {
     // Eseguo la funzione solo se la condizione è soddisfatta
@@ -36,32 +34,6 @@ if (window.location.href.indexOf("welcome.html") > -1) {
 }
 
 //Sezione benchmark
-
-
-/* function startCountdown(){
-    //Inserisco il countdown legandolo alla mia variabile timer
-    timer.textContent = count;
-    //Imposto setInterval ed assegno a mia variabile contatore
-    let contatore = setInterval(function() {
-        //Inserisco il countdown legandolo alla mia variabile timer
-        timer.textContent = count;
-        //Avvio il countdown
-        count--
-        //Verifico che il valore di riferimento count è minore di 0
-        if (count < 0) {
-            //Pulisco il setInterval della variabile contatore
-            clearInterval(contatore);
-            
-            //Carico domande
-            /*
-            
-            funzione()
-        
-        
-        }
-}, 1000);
-}
- */
 
  //Seleziono div timer da dom ed assegno a mia variabile
  let timer = document.querySelector('#timer-number');
