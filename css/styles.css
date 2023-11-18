@@ -101,9 +101,6 @@ span::before{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d20094",endColorstr="#900080",GradientType=1);
 }
 
-
-
-
 .timer {
     margin-top: 10px;
 }
@@ -130,10 +127,10 @@ span::before{
 }
 
 .timer.animatable > svg > circle + circle {
-    animation: countdown 61s ease-in-out forwards;
+    transition: stroke-dashoffset 0.3s ease;
 }
-
-@keyframes countdown {
+  
+ @keyframes countdown {
     from {
       stroke-dashoffset: 0px;
     }
@@ -141,7 +138,7 @@ span::before{
       stroke-dashoffset: 1px;
     }
   }
-
+ 
 .timer text{
     fill: #FFFFFF;
     font-family: 'Inter', sans-serif;
@@ -153,7 +150,7 @@ span::before{
 .timer > svg > text + text {
     font-size: 1rem;
 }
-  
+
   .chart-container {
     position: relative;
     margin: 1em auto;

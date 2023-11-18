@@ -37,11 +37,6 @@ if (window.location.href.indexOf("welcome.html") > -1) {
 
 //Sezione benchmark
 
- //Seleziono div timer da dom ed assegno a mia variabile
-let timer = document.querySelector('#timer-number');
-
-//Dichiaro variabile d'inizio countdown
-let count = 60;
 
 /* function startCountdown(){
     //Inserisco il countdown legandolo alla mia variabile timer
@@ -67,72 +62,215 @@ let count = 60;
 }, 1000);
 }
  */
-function startCountdown(){
-    //Inserisco il countdown legandolo alla mia variabile timer
-    timer.textContent = count;
-    //Dichiaro costante animazione e richiamo da DOM il l'elemento circle figlio di svg
-    const animazione = document.querySelector('svg > circle + circle');
-	//Aggiungo classe animatable a costante animazione
-    animazione.classList.add('animatable');
-    //Setto uno stile ad animazione
-	animazione.style.strokeDashoffset = 1;
-    //Imposto setInterval ed assegno a mia variabile contatore
-    let contatore = setInterval(function() {
-        //Inserisco il countdown legandolo alla mia variabile timer
-        timer.textContent = count;
-        //Avvio il countdown
-        count--
-        
-        //Verifico che il valore di riferimento count è minore di 0
-        if (count < 0) {
-            //Pulisco il setInterval della variabile contatore
-            clearInterval(contatore);
-        }else{ 
-            
-            const normalizedTime = ((count--) - 60) / 60;
 
-			animazione.style.strokeDashoffset = normalizedTime;
-            //Inserisco il countdown legandolo alla mia variabile timer
-            timer.textContent = count;
-            //Rimuovo classe aggiunta ad animazione
-            animazione.classList.remove('animatable');
-            //Carico domande
-            /*
-            
-            funzione()
-            */
-        
-        }
-}, 1000);
-}
+ //Seleziono div timer da dom ed assegno a mia variabile
+ let timer = document.querySelector('#timer-number');
 
-
+ //Dichiaro variabile d'inizio countdown
+ let count = 60;
+ 
+ function startCountdown(){
+     //Inserisco il countdown legandolo alla mia variabile timer
+     timer.textContent = count;
+     //Dichiaro costante animazione e richiamo da DOM il l'elemento circle figlio di svg
+     const animazione = document.querySelector('svg > circle + circle');
+     //Aggiungo classe animatable a costante animazione
+     animazione.classList.add('animatable');
+     //Setto uno stile ad animazione
+     animazione.style.strokeDashoffset = 1;
+     //Imposto setInterval ed assegno a mia variabile contatore
+     let contatore = setInterval(function() {
+         //Inserisco il countdown legandolo alla mia variabile timer
+         timer.textContent = count;
+         //Avvio il countdown
+         let varTime = count--;
+         //Verifico che il valore di riferimento count è minore di 0
+           if (count < 0) {
+             //Pulisco il setInterval della variabile contatore
+             clearInterval(contatore);
+         }else{ 
+             
+             const normalizedTime = (60 + varTime) / 60;
+             //Assegno stile ad animazione
+             animazione.style.strokeDashoffset = normalizedTime;
+             //Inserisco il countdown legandolo alla mia variabile timer
+             timer.textContent = count;
+             //Rimuovo classe aggiunta ad animazione
+             animazione.classList.remove('animatable');
+             //Carico domande
+             
+         
+         }
+ }, 1000);
+ }
 
 if (window.location.href.indexOf("benchmark.html") > -1) {
     // Eseguo la funzione solo se la condizione è soddisfatta
-    //Richiamo la  funzione abilitaBtn()
+    //Richiamo la  funzione startCountdown()
     startCountdown(document.querySelector('.timer'));
 }
 
 
+const questions = [
+    {
+      category: "Science: Computers",
+      type: "multiple",
+      difficulty: "easy",
+      question: "What does CPU stand for?",
+      correct_answer: "Central Processing Unit",
+      incorrect_answers: [
+        "Central Process Unit",
+        "Computer Personal Unit",
+        "Central Processor Unit",
+      ],
+    },
+    {
+      category: "Science: Computers",
+      type: "multiple",
+      difficulty: "easy",
+      question:
+        "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+      correct_answer: "Final",
+      incorrect_answers: ["Static", "Private", "Public"],
+    },
+    {
+      category: "Science: Computers",
+      type: "boolean",
+      difficulty: "easy",
+      question: "The logo for Snapchat is a Bell.",
+      correct_answer: "False",
+      incorrect_answers: ["True"],
+    },
+    {
+      category: "Science: Computers",
+      type: "boolean",
+      difficulty: "easy",
+      question:
+        "Pointers were not used in the original C programming language; they were added later on in C++.",
+      correct_answer: "False",
+      incorrect_answers: ["True"],
+    },
+    {
+      category: "Science: Computers",
+      type: "multiple",
+      difficulty: "easy",
+      question:
+        "What is the most preferred image format used for logos in the Wikimedia database?",
+      correct_answer: ".svg",
+      incorrect_answers: [".png", ".jpeg", ".gif"],
+    },
+    {
+      category: "Science: Computers",
+      type: "multiple",
+      difficulty: "easy",
+      question: "In web design, what does CSS stand for?",
+      correct_answer: "Cascading Style Sheet",
+      incorrect_answers: [
+        "Counter Strike: Source",
+        "Corrective Style Sheet",
+        "Computer Style Sheet",
+      ],
+    },
+    {
+      category: "Science: Computers",
+      type: "multiple",
+      difficulty: "easy",
+      question:
+        "What is the code name for the mobile operating system Android 7.0?",
+      correct_answer: "Nougat",
+      incorrect_answers: [
+        "Ice Cream Sandwich",
+        "Jelly Bean",
+        "Marshmallow",
+      ],
+    },
+    {
+      category: "Science: Computers",
+      type: "multiple",
+      difficulty: "easy",
+      question: "On Twitter, what is the character limit for a Tweet?",
+      correct_answer: "140",
+      incorrect_answers: ["120", "160", "100"],
+    },
+    {
+      category: "Science: Computers",
+      type: "boolean",
+      difficulty: "easy",
+      question: "Linux was first created as an alternative to Windows XP.",
+      correct_answer: "False",
+      incorrect_answers: ["True"],
+    },
+    {
+      category: "Science: Computers",
+      type: "multiple",
+      difficulty: "easy",
+      question:
+        "Which programming language shares its name with an island in Indonesia?",
+      correct_answer: "Java",
+      incorrect_answers: ["Python", "C", "Jakarta"],
+    },
+  ];
 
+ let h2 = document.querySelector('#h2');
+ let arrayDomande = [];
+  function generaDomande(){
+    for (var k in questions){
+        arrayDomande.push(questions[k].question);
+    }
+    let n = 0
+        switch (arrayDomande[n]) {
+            case arrayDomande[0]:
+                h2.innerText = arrayDomande[n];
+                //richiamo funzione genera risposte
+                //generaRisposte();
+            break;
+            case arrayDomande[1]:
+                
+                h2.innerText = arrayDomande[n];
+            break;
+            case arrayDomande[2]:
+                
+                h2.innerText = arrayDomande[n];
+            break;
+            case arrayDomande[3]:
+                
+                h2.innerText = arrayDomande[n];
+            break;
+            case arrayDomande[4]:
+                
+                h2.innerText = arrayDomande[n];
+            break;
+            case arrayDomande[5]:
+                
+                h2.innerText = arrayDomande[n];
+            break;
+            case arrayDomande[6]:
+                
+                h2.innerText = arrayDomande[n];
+            break;
+            case arrayDomande[7]:
+                
+                h2.innerText = arrayDomande[n];
+            break;
+            case arrayDomande[8]:
+                
+                h2.innerText = arrayDomande[n];
+            break;
+            case arrayDomande[9]:
+                
+                h2.innerText = arrayDomande[n];
+            break;
+        }
+  }
+  generaDomande()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  let div = document.querySelector('#risposte');
+  function generaRisposte(){
+        let span = document.createElement('span')
+        div.appendChild(span);
+        span.innerHTML = `<input type='radio'>` + `</input>`
+  }
+  generaRisposte();
 
 
 
