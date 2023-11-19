@@ -61,6 +61,8 @@ if (window.location.href.indexOf("index.html") > -1) {
            if (count < 0) {
              //Pulisco il setInterval della variabile contatore
              clearInterval(contatore);
+             //Richiamo la prossima domanda
+             prossimaDomanda();
          }else{    
              const normalizedTime = (60 + varTime) / 60;
              //Assegno stile ad animazione
@@ -70,7 +72,7 @@ if (window.location.href.indexOf("index.html") > -1) {
              //Rimuovo classe aggiunta ad animazione
              animazione.classList.remove('animatable');
              //Carico domande
-             /* prossimaDomanda() */
+             generaDomanda();
          }
  }, 1000);
  }
@@ -184,24 +186,24 @@ const questions = [
 
  let h2 = document.querySelector('#h2');
  let arrayDomande = [];
-  function generaDomande(){
+  function generaDomanda(){
     for (var k in questions){
-        arrayDomande.push(questions[k].question);
+      arrayDomande.push(questions[k].question);
     }
     let n = 0
         switch (arrayDomande[n]) {
             case arrayDomande[0]:
                 h2.innerText = arrayDomande[n];
                 //richiamo funzione genera risposte
-                //generaRisposte();
+                generaRisposte();
             break;
             case arrayDomande[1]:
-                
                 h2.innerText = arrayDomande[n];
+                generaRisposte();
             break;
             case arrayDomande[2]:
-                
                 h2.innerText = arrayDomande[n];
+                generaRisposte();
             break;
             case arrayDomande[3]:
                 
@@ -233,17 +235,20 @@ const questions = [
             break;
         }
   }
-  generaDomande()
+  generaDomanda()
 
   let div = document.querySelector('#risposte');
+  let arrayRisposte = [];
   function generaRisposte(){
-        let span = document.createElement('span')
-        div.appendChild(span);
-        span.innerHTML = `<input type='radio'>` + `</input>`
+    let span = document.createElement('span')
+    div.appendChild(span);
+    span.innerHTML = `<input type='radio'>` + arrayRisposte + `</input>`
+    for(var j in questions){
+      arrayRisposte.push(questions[j].type)
+      console.log(questions[j].type)
+    }
   }
   generaRisposte();
-
-
 
 
 
