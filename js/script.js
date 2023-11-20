@@ -1,3 +1,7 @@
+function percentage(num){
+    return (num * 100) / 10;
+}
+
 //Sezione index
 
 //Seleziono btn da dom ed assegno a mia variabile
@@ -77,9 +81,9 @@ if (window.location.href.indexOf("index.html") > -1) {
  }, 1000);
  }
 
-if (window.location.href.indexOf("benchmark.html") > -1) {
+ if (window.location.href.indexOf("benchmark.html") > -1) {
     // Eseguo la funzione solo se la condizione è soddisfatta
-    //Richiamo la  funzione startCountdown()
+    // Richiamo la funzione startCountdown()
     startCountdown(document.querySelector('.timer'));
 }
 
@@ -89,7 +93,7 @@ const questions = [
       category: "Science: Computers",
       type: "multiple",
       difficulty: "easy",
-      question: "What does CPU stand for?",
+      question: "What does <b>CPU stand for?</b>",
       correct_answer: "Central Processing Unit",
       incorrect_answers: [
         "Central Process Unit",
@@ -102,7 +106,7 @@ const questions = [
       type: "multiple",
       difficulty: "easy",
       question:
-        "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+        "In the programming language Java, <b>which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?</b>",
       correct_answer: "Final",
       incorrect_answers: ["Static", "Private", "Public"],
     },
@@ -110,7 +114,7 @@ const questions = [
       category: "Science: Computers",
       type: "boolean",
       difficulty: "easy",
-      question: "The logo for Snapchat is a Bell.",
+      question: "The logo for Snapchat <b>is a Bell.</b>",
       correct_answer: "False",
       incorrect_answers: ["True"],
     },
@@ -119,7 +123,7 @@ const questions = [
       type: "boolean",
       difficulty: "easy",
       question:
-        "Pointers were not used in the original C programming language; they were added later on in C++.",
+        "Pointers were not used in the original C programming language; <b>they were added later on in C++.</b>",
       correct_answer: "False",
       incorrect_answers: ["True"],
     },
@@ -128,7 +132,7 @@ const questions = [
       type: "multiple",
       difficulty: "easy",
       question:
-        "What is the most preferred image format used for logos in the Wikimedia database?",
+        "What is the most preferred image format used for <b>logos in the Wikimedia database?</b>",
       correct_answer: ".svg",
       incorrect_answers: [".png", ".jpeg", ".gif"],
     },
@@ -136,7 +140,7 @@ const questions = [
       category: "Science: Computers",
       type: "multiple",
       difficulty: "easy",
-      question: "In web design, what does CSS stand for?",
+      question: "In web design, <b>what does CSS stand for?</b>",
       correct_answer: "Cascading Style Sheet",
       incorrect_answers: [
         "Counter Strike: Source",
@@ -149,7 +153,7 @@ const questions = [
       type: "multiple",
       difficulty: "easy",
       question:
-        "What is the code name for the mobile operating system Android 7.0?",
+        "What is the code name for the <b>mobile operating system Android 7.0?</b>",
       correct_answer: "Nougat",
       incorrect_answers: [
         "Ice Cream Sandwich",
@@ -161,7 +165,7 @@ const questions = [
       category: "Science: Computers",
       type: "multiple",
       difficulty: "easy",
-      question: "On Twitter, what is the character limit for a Tweet?",
+      question: "On Twitter, <b>what is the character limit for a Tweet?</b>",
       correct_answer: "140",
       incorrect_answers: ["120", "160", "100"],
     },
@@ -169,7 +173,7 @@ const questions = [
       category: "Science: Computers",
       type: "boolean",
       difficulty: "easy",
-      question: "Linux was first created as an alternative to Windows XP.",
+      question: "Linux was first created <b>as an alternative to Windows XP.</b>",
       correct_answer: "False",
       incorrect_answers: ["True"],
     },
@@ -178,7 +182,7 @@ const questions = [
       type: "multiple",
       difficulty: "easy",
       question:
-        "Which programming language shares its name with an island in Indonesia?",
+        "Which programming language <b>shares its name with an island in Indonesia?</b>",
       correct_answer: "Java",
       incorrect_answers: ["Python", "C", "Jakarta"],
     },
@@ -311,37 +315,41 @@ if (window.location.href.indexOf("results.html") > -1) {
 
 function cerchioRisultato() {
 document.addEventListener('DOMContentLoaded', function() {
-    var canvas = document.getElementById('doughnutChart');
-    var ctx = canvas.getContext('2d');
-    var centerX = canvas.width / 2;
-    var centerY = canvas.height / 2;
-    var radius = Math.min(canvas.width, canvas.height) / 2;
+    let canvas = document.getElementById('doughnutChart');
+    let ctx = canvas.getContext('2d');
+    let centerX = canvas.width / 2;
+    let centerY = canvas.height / 2;
+    let radius = Math.min(canvas.width, canvas.height) / 2;
 
     // Dati del grafico
-    var data = [40, 60];
-    var colors = ['#C2128D', '#00FFFF'];
+    let X1 = parseInt(params.get('percentageCorrect'));
+    let Y1 = parseInt(params.get('percentageIncorrect'));
+    const data = [X1, Y1];
+    const colors = ['#00FFFF','#C2128D'];
+
+    
 
     // Opzioni del grafico
-    var cutoutPercentage = 0; // Imposta la percentuale di ritaglio a 0
-    var innerRadiusPercentage = 70; // Imposta la percentuale del raggio interno
+    let cutoutPercentage = 0; // Imposta la percentuale di ritaglio a 0
+    let innerRadiusPercentage = 70; // Imposta la percentuale del raggio interno
 
     // Calcola il raggio interno in base alla percentuale
-    var innerRadius = (innerRadiusPercentage / 100) * radius;
+    let innerRadius = (innerRadiusPercentage / 100) * radius;
 
     // Disegna la ciambella
     drawDoughnutChart(ctx, centerX, centerY, radius, innerRadius, cutoutPercentage, data, colors);
 });
 
 function drawDoughnutChart(ctx, x, y, outerRadius, innerRadius, cutoutPercentage, data, colors) {
-    var total = data.reduce(function (acc, value) {
+    let total = data.reduce(function (acc, value) {
         return acc + value;
     }, 0);
 
-    var startAngle = -Math.PI / 2;  
-    var endAngle;
+    let startAngle = -Math.PI / 2;  
+    let endAngle;
 
-    for (var i = 0; i < data.length; i++) {
-        var sliceAngle = (2 * Math.PI * data[i]) / total;
+    for (let i = 0; i < data.length; i++) {
+        let sliceAngle = (2 * Math.PI * data[i]) / total;
 
         // Calcola l'angolo finale del segmento
         endAngle = startAngle + sliceAngle;
@@ -358,7 +366,6 @@ function drawDoughnutChart(ctx, x, y, outerRadius, innerRadius, cutoutPercentage
         startAngle = endAngle;
     }
 }}
-
 
 const results = [];
 let index = 0;
@@ -436,8 +443,6 @@ const generaDomanda = function (arr, indice) {
     index = index + 1;
 }
 
-generaDomanda(questions, index);
-
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('bottoneRisposta')) {
         passaAllaDomandaSuccessiva();
@@ -466,24 +471,49 @@ function passaAllaDomandaSuccessiva() {
     }
 }
 
-function mostraRisultato() {
-    const contadomande = document.getElementById('contadomande');
-    const risultatoDiv = document.createElement('div');
-    risultatoDiv.classList.add('risultato');
+if (window.location.href.indexOf("benchmark.html") > -1) {
+    // Eseguo la funzione solo se la condizione è soddisfatta
+    // Richiamo la funzione abilitaBtn()
+    generaDomanda(questions, index);
+}
 
+let percentageCorrect;
+let percentageIncorrect;
+
+const params = new URLSearchParams(window.location.search);
+
+function mostraRisultato() {
+    let risposteCorretteDate = 0;
+    let risposteSbagliate = 0;
+    
     for (let i = 0; i < results.length; i++) {
         const isRispostaCorretta = results[i].risposta_data === results[i].risposta_esatta;
 
         if (isRispostaCorretta) {
             risposteCorretteDate++;
+        } else {
+            risposteSbagliate++;
         }
     }
 
-    risultatoDiv.innerHTML = `<p>Risposte corrette: ${risposteCorretteDate} su ${results.length}</p>`;
-    contadomande.appendChild(risultatoDiv);
+    const numeroDomande = results.length;
+    percentageCorrect = (risposteCorretteDate / numeroDomande) * 100;
+    percentageIncorrect = (risposteSbagliate / numeroDomande) * 100;
+    
+
+    // Encode values in the URL
+    const redirectURL = `results.html?correct=${risposteCorretteDate}&incorrect=${10 - risposteCorretteDate}&percentageCorrect=${percentageCorrect}&percentageIncorrect=${percentageIncorrect}`;
+
+    console.log("Percentuale risposte corrette:", percentageCorrect.toFixed(2) + "%");
+    console.log("Percentuale risposte sbagliate:", percentageIncorrect.toFixed(2) + "%");
+
+    window.location = redirectURL;
 }
 
-
-
-
-
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector("#span1").innerHTML = params.get('correct');
+    document.querySelector("#span2").innerHTML = params.get('incorrect');
+    document.querySelector("#pCorrect").innerHTML = parseFloat(params.get('percentageCorrect')).toFixed(2) + "%";
+    document.querySelector("#pWrong").innerHTML = parseFloat(params.get('percentageIncorrect')).toFixed(2) + "%";
+   
+});
