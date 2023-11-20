@@ -45,6 +45,7 @@ if (window.location.href.indexOf("index.html") > -1) {
 
  //Dichiaro variabile d'inizio countdown
  let count = 60;
+ let contatore;
  
  function startCountdown(){
      //Inserisco il countdown legandolo alla mia variabile timer
@@ -55,31 +56,25 @@ if (window.location.href.indexOf("index.html") > -1) {
      animazione.classList.add('animatable');
      //Setto uno stile ad animazione
      animazione.style.strokeDashoffset = 1;
-     //Imposto setInterval ed assegno a mia variabile contatore
-     let contatore = setInterval(function() {
-         //Inserisco il countdown legandolo alla mia variabile timer
-         timer.textContent = count;
-         //Avvio il countdown ed assegno a mia variabile varTime
-         let varTime = count--;
-         //Verifico che il valore di riferimento count è minore di 0
-           if (count < 0) {
-             //Pulisco il setInterval della variabile contatore
-             clearInterval(contatore);
-             //Richiamo la prossima domanda
-             //prossimaDomanda();
-         }else{    
-             const normalizedTime = (60 + varTime) / 60;
-             //Assegno stile ad animazione
-             animazione.style.strokeDashoffset = normalizedTime;
-             //Inserisco il countdown legandolo alla mia variabile timer
-             timer.textContent = count;
-             //Rimuovo classe aggiunta ad animazione
-             animazione.classList.remove('animatable');
-             //Carico domande
-          //   generaDomanda();
-         }
- }, 1000);
- }
+   // Imposto setInterval ed assegno a mia variabile contatore
+   contatore = setInterval(function () {
+    // Inserisco il countdown legandolo alla mia variabile timer
+    timer.textContent = count;
+    // Avvio il countdown ed assegno a mia variabile varTime
+    let varTime = count--;
+    // Verifico che il valore di riferimento count è minore di 0
+    if (count < 0) {
+        // Pulisco il setInterval della variabile contatore
+        clearInterval(contatore);
+        // Richiamo la prossima domanda
+        passaAllaDomandaSuccessiva();
+    } else {
+        const normalizedTime = (60 + varTime) / 60;
+        // Assegno stile ad animazione
+        animazione.style.strokeDashoffset = normalizedTime;
+    }
+}, 1000);
+}
 
  if (window.location.href.indexOf("benchmark.html") > -1) {
     // Eseguo la funzione solo se la condizione è soddisfatta
@@ -286,7 +281,7 @@ function illuminaStelle(stelle, startIndex) {
 
 function riduciStelle(stelle, startIndex) {
     for (let i = startIndex + 1; i < stelle.length; i++) {
-        changeStarColor(stelle[i], "#0B113B");
+        changeStarColor(stelle[i], "#15206e");
     }
 }
 
@@ -463,13 +458,20 @@ function passaAllaDomandaSuccessiva() {
 
     results[index - 1].risposta_data = rispostaData;
 
+    // Resettare il timer quando passi alla prossima domanda
+    clearInterval(contatore);
+    count = 60;
+
     if (index < questions.length) {
         divRisposte.innerHTML = '';
         generaDomanda(questions, index);
+        // Avvia il timer per la nuova domanda
+        startCountdown();
     } else if (index === questions.length) {
         mostraRisultato();
     }
 }
+
 
 if (window.location.href.indexOf("benchmark.html") > -1) {
     // Eseguo la funzione solo se la condizione è soddisfatta
