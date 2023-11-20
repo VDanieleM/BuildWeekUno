@@ -62,7 +62,7 @@ if (window.location.href.indexOf("index.html") > -1) {
              //Pulisco il setInterval della variabile contatore
              clearInterval(contatore);
              //Richiamo la prossima domanda
-             prossimaDomanda();
+             //prossimaDomanda();
          }else{    
              const normalizedTime = (60 + varTime) / 60;
              //Assegno stile ad animazione
@@ -72,7 +72,7 @@ if (window.location.href.indexOf("index.html") > -1) {
              //Rimuovo classe aggiunta ad animazione
              animazione.classList.remove('animatable');
              //Carico domande
-             generaDomanda();
+          //   generaDomanda();
          }
  }, 1000);
  }
@@ -183,7 +183,7 @@ const questions = [
       incorrect_answers: ["Python", "C", "Jakarta"],
     },
   ];
-
+/*
  let h2 = document.querySelector('#h2');
  let arrayDomande = [];
   function generaDomanda(){
@@ -252,7 +252,7 @@ const questions = [
 
 
 
-
+*/
 
 
 
@@ -358,3 +358,132 @@ function drawDoughnutChart(ctx, x, y, outerRadius, innerRadius, cutoutPercentage
         startAngle = endAngle;
     }
 }}
+
+
+const results = [];
+let index = 0;
+let risposteCorretteDate = 0; // Aggiunto contatore delle risposte corrette
+
+const generaDomanda = function (arr, indice) {
+    const divRisposte = document.querySelector('.risposte'); // selezioniamo il div risposte
+
+    // per ogni risposta sbagliata +1 creiamo un bottone
+    for (let i=0; i<=arr[indice].incorrect_answers.length; i++) {
+        const risposte = document.createElement('button');
+        risposte.classList.add('sbagliata'); // aggiungiamo la classe sbagliata a tutti (che poi andremo a rimuovere)
+        risposte.classList.add('bottoneRisposta'); // aggiungiamo la classe bottone per lo stile
+        divRisposte.appendChild(risposte); // mettiamo ogni bottone dentro al div risposte
+
+        risposte.addEventListener('click', function() {
+            const risposteButtons = document.querySelectorAll('.bottoneRisposta');
+            risposteButtons.forEach(button => button.classList.remove('selezionata'));
+
+            risposte.classList.add('selezionata');
+        });
+    }
+
+    results[index] = {};
+    results[index].domanda = arr[indice].question;
+    results[index].risposta_esatta = arr[indice].correct_answer;
+
+    const domanda = document.getElementById('domanda');
+    risposte = document.getElementsByClassName('bottoneRisposta');
+    domanda.innerHTML = arr[indice].question;
+
+    if(arr[indice].incorrect_answers.length == 3) {
+        rispIndex = Math.floor(Math.random()*4);
+        risposte[rispIndex].innerHTML = arr[indice].correct_answer;
+        risposte[rispIndex].classList.remove('sbagliata');
+        risposte[rispIndex].classList.add('corretta');
+
+        switch (rispIndex) {
+            case 0:
+                risposte[1].innerHTML = arr[indice].incorrect_answers[0];
+                risposte[2].innerHTML = arr[indice].incorrect_answers[1];
+                risposte[3].innerHTML = arr[indice].incorrect_answers[2];
+                break;
+            case 1:
+                risposte[0].innerHTML = arr[indice].incorrect_answers[0];
+                risposte[2].innerHTML = arr[indice].incorrect_answers[1];
+                risposte[3].innerHTML = arr[indice].incorrect_answers[2];
+                break;
+            case 2:
+                risposte[0].innerHTML = arr[indice].incorrect_answers[0];
+                risposte[1].innerHTML = arr[indice].incorrect_answers[1];
+                risposte[3].innerHTML = arr[indice].incorrect_answers[2];
+                break;
+            case 3:
+                risposte[0].innerHTML = arr[indice].incorrect_answers[0];
+                risposte[2].innerHTML = arr[indice].incorrect_answers[1];
+                risposte[1].innerHTML = arr[indice].incorrect_answers[2];
+                break;
+        }
+    } else {
+        rispIndex = Math.floor(Math.random()*2);
+        risposte[rispIndex].innerHTML = arr[indice].correct_answer;
+        risposte[rispIndex].classList.remove('sbagliata');
+        risposte[rispIndex].classList.add('corretta');
+
+        switch (rispIndex) {
+            case 0:
+                risposte[1].innerHTML = arr[indice].incorrect_answers[0];
+                break;
+            case 1:
+                risposte[0].innerHTML = arr[indice].incorrect_answers[0];
+                break;
+        }
+    }
+    index = index + 1;
+}
+
+generaDomanda(questions, index);
+
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('bottoneRisposta')) {
+        passaAllaDomandaSuccessiva();
+    }
+});
+
+function passaAllaDomandaSuccessiva() {
+    const divRisposte = document.querySelector('.risposte');
+    const risposteButtons = divRisposte.querySelectorAll('.bottoneRisposta');
+
+    const rispostaSelezionata = Array.from(risposteButtons).find(button => button.classList.contains('selezionata'));
+
+    if (!rispostaSelezionata) {
+        return;
+    }
+
+    const rispostaData = rispostaSelezionata.innerHTML;
+
+    results[index - 1].risposta_data = rispostaData;
+
+    if (index < questions.length) {
+        divRisposte.innerHTML = '';
+        generaDomanda(questions, index);
+    } else if (index === questions.length) {
+        mostraRisultato();
+    }
+}
+
+function mostraRisultato() {
+    const contadomande = document.getElementById('contadomande');
+    const risultatoDiv = document.createElement('div');
+    risultatoDiv.classList.add('risultato');
+
+    for (let i = 0; i < results.length; i++) {
+        const isRispostaCorretta = results[i].risposta_data === results[i].risposta_esatta;
+
+        if (isRispostaCorretta) {
+            risposteCorretteDate++;
+        }
+    }
+
+    risultatoDiv.innerHTML = `<p>Risposte corrette: ${risposteCorretteDate} su ${results.length}</p>`;
+    contadomande.appendChild(risultatoDiv);
+}
+
+
+
+
+

@@ -385,3 +385,25 @@ td button:hover:before {
   margin-left: auto;
   margin-right: auto;
 }
+
+
+
+.bottoneRisposta{
+  width: 40%;
+    height: 80px;
+    border-radius: 50px;
+    margin: 1em 1.5em;
+    background-color: #8080802e;
+    box-shadow: -2px -2px 5px white;
+    border-color: #8080802e;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.bottoneRisposta:hover {
+  background: linear-gradient(to bottom, #ff00b7, #8A0179);
+}
+  .corretta:hover {
+    background: linear-gradient(to bottom, #00ff1a, #018a4a); ;
+  }
