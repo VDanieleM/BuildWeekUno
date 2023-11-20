@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results</title>
+    <title>Benchmark</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 </head>
@@ -13,21 +13,21 @@
             <img src="img/epicode_logo.png" class="logo" alt="epicode_logo">
             <div id="timer" class="timer alignRight animatable">
                 <svg>
-                    <circle cx="50%" cy="50%" r="90"/>
-                    <circle cx="50%" cy="50%" r="90" pathLength="1" />
+                    <circle cx="50%" cy="50%" r="60"/>
+                    <circle cx="50%" cy="50%" r="60" pathLength="1"/>
                     <text x="100" y="65" text-anchor="middle">SECONDS</text>
                     <text x="100" y="115" text-anchor="middle"><tspan id="timer-number"></tspan></text>
-                    <text x="100" y="140" text-anchor="middle">REMANING</text>
+                    <text id="remaining" x="100" y="140" text-anchor="middle">REMANING</text>
                 </svg>
             </div>
         </header>
-        <main>
+        <main id="mainDomande">
             <h2 id="domanda"> </h2>
 
            <div class="risposte"></div>
            <div id="contadomande"></div>
        </main>
-        
+
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -39,6 +39,10 @@ h2 {
   font-weight: 400;
 }
 
+#domanda {
+  margin: 1.5em;
+}
+
 h3 {
   font-size: 1.5em;
   margin-top: 0.5em;
@@ -210,7 +214,10 @@ label {
 }
 
 .timer {
-    margin-top: 10px;
+  margin-top: -10%;
+  display: inline-block;
+  transform: translate(70em, 6.8em);
+  padding-bottom: 5em;
 }
   
 .timer > svg {
@@ -225,6 +232,7 @@ label {
     stroke-width: 15;
     transform-origin: center center;
     transform: rotate(-90deg);
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0))
 }
 
 .timer > svg > circle + circle {
@@ -250,13 +258,21 @@ label {
 .timer text{
     fill: #FFFFFF;
     font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    transform: translate(0%, 7%);
 }
+
 #timer-number {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
 }
 
 .timer > svg > text + text {
-    font-size: 1rem;
+  font-size: 0.6rem;
+  transform: translate(0%, 0%);
+}
+
+#remaining {
+  transform: translate(0%, -5%);
 }
   
 .chart-container {
@@ -342,7 +358,7 @@ canvas {
   font-family: 'Outfit', sans-serif;;
 }
 
-td button {
+/* td button {
   padding: 1em;
   margin: 1em;
   background-color: #ffffff1f;
@@ -357,13 +373,13 @@ td button {
   z-index: 1;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-}
+} */
 
-td button:hover {
+/* td button:hover {
   background: linear-gradient(to bottom, #ff00b7, #8A0179);
-}
+} */
 
-td button:before {
+/* td button:before {
   content: "";
   position: absolute;
   inset: 0;
@@ -374,11 +390,11 @@ td button:before {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   z-index: -1;
-}
+} */
 
-td button:hover:before {
+/* td button:hover:before {
   z-index: -1;
-}
+} */
 
 
 #tableAnswers {
@@ -386,24 +402,24 @@ td button:hover:before {
   margin-right: auto;
 }
 
-
-
 .bottoneRisposta{
   width: 40%;
     height: 80px;
     border-radius: 50px;
     margin: 1em 1.5em;
     background-color: #8080802e;
-    box-shadow: -2px -2px 5px white;
-    border-color: #8080802e;
+    border-color: #ffffffc0;
     color: white;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
 }
 
 .bottoneRisposta:hover {
   background: linear-gradient(to bottom, #ff00b7, #8A0179);
 }
-  .corretta:hover {
-    background: linear-gradient(to bottom, #00ff1a, #018a4a); ;
-  }
+
+#mainDomande {
+  margin-left: 25%;
+  margin-right: 25%;
+}

@@ -517,3 +517,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector("#pWrong").innerHTML = parseFloat(params.get('percentageIncorrect')).toFixed(2) + "%";
    
 });
+
+let messageResult = document.querySelector("#passedResult")
+
+if(parseInt(params.get('percentageCorrect'))>59) 
+    {messageResult.innerHTML = "Congratulations!<br>You passed the exam."}
+
+else 
+    {messageResult.innerHTML = "Ritenta,<br> sarai più fortunato!";
+    document.querySelector("#display").style.visibility = "hidden"}
