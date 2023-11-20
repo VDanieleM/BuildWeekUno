@@ -527,4 +527,5 @@ if(parseInt(params.get('percentageCorrect'))>59)
 
 else 
     {messageResult.innerHTML = "Ritenta,<br> sarai più fortunato!";
+    messageResult.style.color = "#ff00b7";
     document.querySelector("#display").style.visibility = "hidden"}
